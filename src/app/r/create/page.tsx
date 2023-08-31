@@ -13,7 +13,7 @@ import { useCustomToast } from "@/hooks/use-custom-toast";
 const Page = ({}) => {
   const [input, setInput] = useState("");
   const router = useRouter();
-  const { loginToast } = useCustomToast();
+  const { loginToast, unknownerrorToast } = useCustomToast();
   const { mutate: createCommunity, isLoading } = useMutation({
     mutationFn: async () => {
       const payload: CreateSubnexusPayload = {
@@ -51,11 +51,7 @@ const Page = ({}) => {
         }
       }
 
-      toast({
-        title: "There was an error.",
-        description: "Please refresh a page and try again",
-        variant: "destructive",
-      });
+      unknownerrorToast();
     },
   });
 

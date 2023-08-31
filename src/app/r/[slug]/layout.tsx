@@ -2,6 +2,7 @@ import { getAuthSession } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { notFound } from "next/navigation";
 import { format } from "date-fns";
+import SubscribeLeaveToggle from "@/components/SubscribeLeaveToggle";
 
 const Layout = async ({
   children,
@@ -79,6 +80,14 @@ const Layout = async ({
                 <div className="flex justify-between gap-x-4 py-3">
                   <p className="text-gray-700">You created this community</p>
                 </div>
+              ) : null}
+
+              {subnexus.creatorId !== session?.user.id ? (
+                <SubscribeLeaveToggle
+                  subnexusId={subnexus.id}
+                  subnexusName={subnexus.name}
+                  isSubscribed={isSubscription}
+                />
               ) : null}
             </dl>
           </div>

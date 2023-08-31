@@ -22,5 +22,13 @@ export const useCustomToast = () => {
     });
   };
 
-  return { loginToast };
+  const unknownerrorToast = () => {
+    toast({
+      title: "There was an error.",
+      description: "Please refresh a page and try again",
+      variant: "destructive",
+    });
+  };
+
+  return { loginToast, unknownerrorToast };
 };
